@@ -95,7 +95,7 @@ public class PatientBST {
 
     public void displayInOrder() {
         if (root == null) {
-            System.out.println("(No patients registered yet)");
+            System.out.println("   (No patients registered yet)");
             return;
         }
         inOrderRec(root);
