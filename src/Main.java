@@ -44,7 +44,7 @@ public class Main {
     }
 
     private static void printMenu() {
-        System.out.println("      HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
+        System.out.println("      MINI HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
         System.out.println("=====================================================");
 
         System.out.println("\n---- Patient Records (BST) ----");
