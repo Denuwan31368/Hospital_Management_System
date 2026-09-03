@@ -11,7 +11,7 @@ public class Main {
 
         while (running) {
             printMenu();
-            int choice = readInt("Enter your choice: ");
+            int choice = readInt("Enter your choice(number): ");
 
             switch (choice) {
                 case 1 -> registerPatient();
@@ -29,9 +29,9 @@ public class Main {
                 case 13 -> removeVisit();
                 case 0 -> {
                     running = false;
-                    System.out.println("Exiting system. Goodbye!");
+                    System.out.println("Exiting system.");
                 }
-                default -> System.out.println("Invalid choice, please try again.");
+                default -> System.out.println("try again.");
             }
 
             if (running) {
