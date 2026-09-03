@@ -1,10 +1,10 @@
-# Hospital Management System
+# HOSPITAL EMERGENCY MANAGEMENT SYSTEM
 
 CIT300 – Data Structures and Algorithms
 Individual Mid Assignment
 Student ID: 23DA2-0428
 
-## What this project does
+## Description of Project
 
 This is a console (text-based) Java application that simulates how a
 hospital's emergency unit might manage patients. You interact with it
