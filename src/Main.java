@@ -44,26 +44,25 @@ public class Main {
     }
 
     private static void printMenu() {
-        System.out.println("=====================================================");
         System.out.println("      HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
         System.out.println("=====================================================");
 
-        System.out.println("\n--- Patient Records (BST) ---");
+        System.out.println("\n---- Patient Records (BST) ----");
         System.out.println(" 1. Register new patient");
         System.out.println(" 2. Search patient by ID");
         System.out.println(" 3. Delete patient");
         System.out.println(" 4. Display all patients (in-order by ID)");
 
-        System.out.println("\n--- Emergency Queue ---");
+        System.out.println("\n---- Emergency Queue ----");
         System.out.println(" 5. Add patient to emergency queue");
         System.out.println(" 6. Treat next patient (dequeue)");
         System.out.println(" 7. Display waiting queue");
 
-        System.out.println("\n--- Treatment History (Stack) ---");
+        System.out.println("\n---- Treatment History (Stack) ----");
         System.out.println(" 8. Display treatment history");
         System.out.println(" 9. Undo last treatment record (pop)");
 
-        System.out.println("\n--- Patient Visit History (Linked List) ---");
+        System.out.println("\n---- Patient Visit History (Linked List) ----");
         System.out.println("10. Add visit record to a patient");
         System.out.println("11. View a patient's visit history");
         System.out.println("12. Search a visit record");
