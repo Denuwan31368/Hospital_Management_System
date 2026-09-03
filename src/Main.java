@@ -7,7 +7,6 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        loadSampleData(); 
         boolean running = true;
 
         while (running) {
@@ -34,30 +33,45 @@ public class Main {
                 }
                 default -> System.out.println("Invalid choice, please try again.");
             }
+
+            if (running) {
+                System.out.println("\nPress Enter to return to the menu...");
+                scanner.nextLine();
+                clearScreen();
+            }
         }
         scanner.close();
     }
 
     private static void printMenu() {
-        System.out.println("\n===== MINI HOSPITAL EMERGENCY MANAGEMENT SYSTEM =====");
-        System.out.println(" --- Patient Records (BST) ---");
+        System.out.println("=====================================================");
+        System.out.println("      HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
+        System.out.println("=====================================================");
+
+        System.out.println("\n--- Patient Records (BST) ---");
         System.out.println(" 1. Register new patient");
         System.out.println(" 2. Search patient by ID");
         System.out.println(" 3. Delete patient");
         System.out.println(" 4. Display all patients (in-order by ID)");
-        System.out.println(" --- Emergency Queue ---");
+
+        System.out.println("\n--- Emergency Queue ---");
         System.out.println(" 5. Add patient to emergency queue");
         System.out.println(" 6. Treat next patient (dequeue)");
         System.out.println(" 7. Display waiting queue");
-        System.out.println(" --- Treatment History (Stack) ---");
+
+        System.out.println("\n--- Treatment History (Stack) ---");
         System.out.println(" 8. Display treatment history");
         System.out.println(" 9. Undo last treatment record (pop)");
-        System.out.println(" --- Patient Visit History (Linked List) ---");
+
+        System.out.println("\n--- Patient Visit History (Linked List) ---");
         System.out.println("10. Add visit record to a patient");
         System.out.println("11. View a patient's visit history");
         System.out.println("12. Search a visit record");
         System.out.println("13. Remove a visit record");
+
+        System.out.println("\n---------------------------------------------------");
         System.out.println(" 0. Exit");
+        System.out.println("=====================================================");
     }
 
     private static void registerPatient() {
@@ -95,8 +109,6 @@ public class Main {
         System.out.println(removed ? "Patient deleted." : "No patient found with that ID.");
     }
 
-    //QUEUE OPERATIONS
-
     private static void addToEmergencyQueue() {
         int id = readInt("Enter Patient ID to add to queue: ");
         Patient patient = patientBST.search(id);
@@ -123,16 +135,12 @@ public class Main {
         treatmentStack.push(record);
     }
 
-    //  STACK OPERATIONS
-
     private static void undoLastTreatment() {
         TreatmentRecord removed = treatmentStack.pop();
         if (removed != null) {
             System.out.println("Removed most recent treatment record: " + removed);
         }
     }
-
-    // LINKED LIST OPERATIONS
 
     private static void addVisitHistory() {
         int id = readInt("Enter Patient ID: ");
@@ -201,19 +209,9 @@ public class Main {
         return value;
     }
 
-    private static void loadSampleData() {
-        Patient p1 = new Patient(101, "Nimal Perera", 34, "0771234567", "Fractured arm");
-        Patient p2 = new Patient(102, "Kamala Silva", 28, "0777654321", "High fever");
-        Patient p3 = new Patient(103, "Ruwan Fernando", 45, "0712345678", "Chest pain");
-
-        patientBST.insert(p1);
-        patientBST.insert(p2);
-        patientBST.insert(p3);
-
-        p1.getVisitHistory().addVisit(new Visit(1, "2026-01-10", "Dr. Silva", "Sprain", "Rest and ice pack"));
-        p2.getVisitHistory().addVisit(new Visit(1, "2026-02-15", "Dr. Perera", "Flu", "Paracetamol"));
-
-        emergencyQueue.enqueue(p1);
-        emergencyQueue.enqueue(p3);
+    private static void clearScreen() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
 }
