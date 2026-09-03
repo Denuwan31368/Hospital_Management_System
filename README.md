@@ -1,4 +1,4 @@
-# Hospital Emergency Management System
+# Hospital Management System
 
 CIT300 – Data Structures and Algorithms
 Individual Mid Assignment
