@@ -11,7 +11,7 @@ public class Main {
 
         while (running) {
             printMenu();
-            int choice = readInt("Enter your choice(number): ");
+            int choice = readInt("Enter your choice: ");
 
             switch (choice) {
                 case 1 -> registerPatient();
@@ -22,16 +22,17 @@ public class Main {
                 case 6 -> treatNextPatient();
                 case 7 -> emergencyQueue.displayQueue();
                 case 8 -> treatmentStack.displayStack();
-                case 9 -> undoLastTreatment();
-                case 10 -> addVisitHistory();
-                case 11 -> viewVisitHistory();
-                case 12 -> searchVisit();
-                case 13 -> removeVisit();
+                case 9 -> pushTreatmentRecord();
+                case 10 -> undoLastTreatment();
+                case 11 -> addVisitHistory();
+                case 12 -> viewVisitHistory();
+                case 13 -> searchVisit();
+                case 14 -> removeVisit();
                 case 0 -> {
                     running = false;
-                    System.out.println("Exiting system.");
+                    System.out.println("Exiting system. Goodbye!");
                 }
-                default -> System.out.println("try again.");
+                default -> System.out.println("Invalid choice, please try again.");
             }
 
             if (running) {
@@ -44,29 +45,31 @@ public class Main {
     }
 
     private static void printMenu() {
-        System.out.println("      MINI HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
+        
+        System.out.println("     MINI HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
         System.out.println("=====================================================");
 
-        System.out.println("\n---- Patient Records (BST) ----");
+        System.out.println("\n--- Patient Records (BST) ---");
         System.out.println(" 1. Register new patient");
         System.out.println(" 2. Search patient by ID");
         System.out.println(" 3. Delete patient");
         System.out.println(" 4. Display all patients (in-order by ID)");
 
-        System.out.println("\n---- Emergency Queue ----");
+        System.out.println("\n--- Emergency Queue ---");
         System.out.println(" 5. Add patient to emergency queue");
         System.out.println(" 6. Treat next patient (dequeue)");
         System.out.println(" 7. Display waiting queue");
 
-        System.out.println("\n---- Treatment History (Stack) ----");
+        System.out.println("\n--- Treatment History (Stack) ---");
         System.out.println(" 8. Display treatment history");
-        System.out.println(" 9. Undo last treatment record (pop)");
+        System.out.println(" 9. Add a completed treatment record (push)");
+        System.out.println("10. Undo last treatment record (pop)");
 
-        System.out.println("\n---- Patient Visit History (Linked List) ----");
-        System.out.println("10. Add visit record to a patient");
-        System.out.println("11. View a patient's visit history");
-        System.out.println("12. Search a visit record");
-        System.out.println("13. Remove a visit record");
+        System.out.println("\n--- Patient Visit History (Linked List) ---");
+        System.out.println("11. Add visit record to a patient");
+        System.out.println("12. View a patient's visit history");
+        System.out.println("13. Search a visit record");
+        System.out.println("14. Remove a visit record");
 
         System.out.println("\n---------------------------------------------------");
         System.out.println(" 0. Exit");
@@ -139,6 +142,22 @@ public class Main {
         if (removed != null) {
             System.out.println("Removed most recent treatment record: " + removed);
         }
+    }
+
+    private static void pushTreatmentRecord() {
+        int id = readInt("Enter Patient ID: ");
+        Patient patient = patientBST.search(id);
+        if (patient == null) {
+            System.out.println("Patient not found. Register the patient first (option 1).");
+            return;
+        }
+        System.out.print("Enter treatment details: ");
+        String details = scanner.nextLine();
+        System.out.print("Enter completion date (e.g. 2026-08-31): ");
+        String date = scanner.nextLine();
+
+        TreatmentRecord record = new TreatmentRecord(patient.getPatientId(), patient.getName(), details, date);
+        treatmentStack.push(record);
     }
 
     private static void addVisitHistory() {
