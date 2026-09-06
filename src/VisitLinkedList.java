@@ -99,7 +99,7 @@ public class VisitLinkedList {
 
     public void displayVisits() {
         if (head == null) {
-            System.out.println("   (No visit history yet)");
+            System.out.println("(No visit history yet)");
             return;
         }
         Node current = head;
