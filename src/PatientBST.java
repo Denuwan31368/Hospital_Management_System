@@ -1,3 +1,43 @@
+class Patient {
+    private int patientId;
+    private String name;
+    private int age;
+    private String contactNumber;
+    private String medicalCondition;
+    private VisitLinkedList visitHistory;
+
+    public Patient(int patientId, String name, int age, String contactNumber, String medicalCondition) {
+        this.patientId = patientId;
+        this.name = name;
+        this.age = age;
+        this.contactNumber = contactNumber;
+        this.medicalCondition = medicalCondition;
+        this.visitHistory = new VisitLinkedList();
+    }
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public VisitLinkedList getVisitHistory() {
+        return visitHistory;
+    }
+
+    @Override
+    public String toString() {
+        return  "Patient ID: " + patientId +
+                " | Name: " + name +
+                " | Age: " + age +
+                " | Contact: " + contactNumber +
+                " | Condition: " + medicalCondition;
+    }
+}
+
+
 public class PatientBST {
 
     private static class Node {
@@ -66,19 +106,15 @@ public class PatientBST {
         } else if (patientId > node.patient.getPatientId()) {
             node.right = deleteRec(node.right, patientId);
         } else {
-
-
             if (node.left == null && node.right == null) {
                 return null;
             }
-
             if (node.left == null) {
                 return node.right;
             }
             if (node.right == null) {
                 return node.left;
             }
-
             Node successor = findMin(node.right);
             node.patient = successor.patient;
             node.right = deleteRec(node.right, successor.patient.getPatientId());

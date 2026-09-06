@@ -1,11 +1,48 @@
+/**
+ * TreatmentRecord.java content merged into this file, so the model
+ * class sits right next to the data structure that stores it.
+ */
+
+/**
+ * TreatmentRecord — one completed treatment event (model class).
+ * Package-private, since only one public class per file is allowed
+ * and it must match the filename (TreatmentStack).
+ */
+class TreatmentRecord {
+    private int patientId;
+    private String patientName;
+    private String treatmentDetails;
+    private String completedDate;
+
+    public TreatmentRecord(int patientId, String patientName, String treatmentDetails, String completedDate) {
+        this.patientId = patientId;
+        this.patientName = patientName;
+        this.treatmentDetails = treatmentDetails;
+        this.completedDate = completedDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient ID: " + patientId +
+                " | Name: " + patientName +
+                " | Treatment: " + treatmentDetails +
+                " | Completed: " + completedDate;
+    }
+}
+
+/**
+ * TreatmentStack — the Stack that stores completed TreatmentRecords.
+ * Follows LIFO (Last-In, First-Out).
+ * Supports: push, pop, display, isEmpty.
+ */
 public class TreatmentStack {
 
     private TreatmentRecord[] records;
-    private int top;     
+    private int top;
     private int capacity;
 
     public TreatmentStack() {
-        capacity = 50; 
+        capacity = 50;
         records = new TreatmentRecord[capacity];
         top = -1;
     }
@@ -35,7 +72,7 @@ public class TreatmentStack {
 
     public void displayStack() {
         if (isEmpty()) {
-            System.out.println("(No completed treatments yet)");
+            System.out.println("   (No completed treatments yet)");
             return;
         }
         for (int i = top; i >= 0; i--) {

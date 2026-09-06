@@ -1,3 +1,32 @@
+class Visit {
+    private int visitId;
+    private String visitDate;
+    private String doctorName;
+    private String diagnosis;
+    private String treatment;
+
+    public Visit(int visitId, String visitDate, String doctorName, String diagnosis, String treatment) {
+        this.visitId = visitId;
+        this.visitDate = visitDate;
+        this.doctorName = doctorName;
+        this.diagnosis = diagnosis;
+        this.treatment = treatment;
+    }
+
+    public int getVisitId() {
+        return visitId;
+    }
+
+    @Override
+    public String toString() {
+        return "Visit ID: " + visitId +
+                " | Date: " + visitDate +
+                " | Doctor: " + doctorName +
+                " | Diagnosis: " + diagnosis +
+                " | Treatment: " + treatment;
+    }
+}
+
 public class VisitLinkedList {
 
     private static class Node {
@@ -10,8 +39,8 @@ public class VisitLinkedList {
         }
     }
 
-    private Node head;   
-    private int size;    
+    private Node head;
+    private int size;
 
     public VisitLinkedList() {
         head = null;
@@ -47,14 +76,14 @@ public class VisitLinkedList {
         Node current = head.next;
         while (current != null) {
             if (current.data.getVisitId() == visitId) {
-                prev.next = current.next; 
+                prev.next = current.next;
                 size--;
                 return true;
             }
             prev = current;
             current = current.next;
         }
-        return false; 
+        return false;
     }
 
     public Visit searchVisit(int visitId) {
