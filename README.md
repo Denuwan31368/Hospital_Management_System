@@ -20,12 +20,6 @@ specifically requires, each one built **from scratch** (not using
 Java's built-in `ArrayList`, `Queue`, `Stack`, or `LinkedList` classes)
 so the underlying mechanics are visible and explainable.
 
-> **Key idea:** there is only one copy of each `Patient` object, created
-> when you register them. The BST stores it. When you "add to queue,"
-> the Queue doesn't get a copy — it gets a reference to that exact same
-> object. So whether you look up a patient through the queue or the
-> BST, you're always looking at the same real data.
-
 ---
 
 ## Project Structure
