@@ -1,13 +1,3 @@
-/**
- * TreatmentRecord.java content merged into this file, so the model
- * class sits right next to the data structure that stores it.
- */
-
-/**
- * TreatmentRecord — one completed treatment event (model class).
- * Package-private, since only one public class per file is allowed
- * and it must match the filename (TreatmentStack).
- */
 class TreatmentRecord {
     private int patientId;
     private String patientName;
@@ -23,18 +13,13 @@ class TreatmentRecord {
 
     @Override
     public String toString() {
-        return "Patient ID: " + patientId +
+        return  "Patient ID: " + patientId +
                 " | Name: " + patientName +
                 " | Treatment: " + treatmentDetails +
                 " | Completed: " + completedDate;
     }
 }
 
-/**
- * TreatmentStack — the Stack that stores completed TreatmentRecords.
- * Follows LIFO (Last-In, First-Out).
- * Supports: push, pop, display, isEmpty.
- */
 public class TreatmentStack {
 
     private TreatmentRecord[] records;
